@@ -1,24 +1,88 @@
----
-const name = "Enrico";
-const profession = "Platform Manager";
----
-
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Enrico P. website</title>
-	</head>
-	<body>
-		<h1>Hello World!</h1>
-		<h2>I'm {name}.</h2>
-		<p>I'm a {profession}, and this is my website built with Astro.</p>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enrico Piazza | Platform Management</title>
+  </head>
+  <body>
+    <div class="portfolio-grid">
+      <header>Enrico Piazza</header>
+      <main>
+        <p class="eyebrow">Platform Management · Digital Delivery</p>
+        <h1>Making complex digital platforms work.</h1>
+        <p class="intro">
+          I’m a platform manager who brings business stakeholders and technical
+          teams together to deliver and operate digital platforms.
+        </p>
+      </main>
+    </div>
+  </body>
+</html>
 
 <style>
   body {
-    font-family: Arial, sans-serif;
+    --paper: #faf9f6;
+    --stripe: #f7f6f2;
+    margin: 0;
+    padding-inline: clamp(16px, 5%, 56px);
+    background: var(--paper);
+    color: #242321;
+    font: 400 16px/1.5 system-ui, sans-serif;
+  }
+
+  .portfolio-grid {
+    --band: calc(100% / 6);
+    max-width: 76rem;
+    min-height: 100vh;
+    margin-inline: auto;
+    background: repeating-linear-gradient(
+      to right,
+      var(--paper) 0 var(--band),
+      var(--stripe) var(--band) calc(2 * var(--band))
+    );
+  }
+
+  header {
+    padding-block: 24px;
+    border-bottom: 1px solid #dedbd4;
+    font-weight: 650;
+  }
+
+  main {
+    padding-block: clamp(64px, 13vw, 134px) clamp(76px, 15vw, 156px);
+  }
+
+  .eyebrow {
+    margin: 0 0 24px;
+    color: #56524b;
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 15ch;
+    margin: 0;
+    font-size: clamp(2.35rem, 8.4vw, 6rem);
+    font-weight: 650;
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .intro {
+    max-width: 43ch;
+    margin: 28px 0 0;
+    color: #56524b;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 600px) {
+    .portfolio-grid {
+      --band: 25%;
+    }
   }
 </style>
-
-</html>
