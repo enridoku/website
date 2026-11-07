@@ -7,7 +7,14 @@
   </head>
   <body>
     <div class="portfolio-grid">
-      <header>Enrico Piazza</header>
+      <header>
+        <span class="site-name">Enrico Piazza</span>
+        <ul class="menu-preview" aria-label="Planned navigation">
+          <li>About</li>
+          <li>Experience</li>
+          <li>Contact</li>
+        </ul>
+      </header>
       <main>
         <p class="eyebrow">Platform Management · Digital Delivery</p>
         <h1>Making complex digital platforms work.</h1>
@@ -59,9 +66,27 @@
     --ruler-ink: #a9a398;
     position: relative;
     grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
     padding-block: 24px;
     border-bottom: 1px solid var(--ruler-ink);
+  }
+
+  .site-name {
     font-weight: 650;
+  }
+
+  .menu-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px clamp(12px, 2.5vw, 32px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.875rem;
   }
 
   header::after {
