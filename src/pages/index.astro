@@ -21,29 +21,33 @@
 </html>
 
 <style>
+  html {
+    background: #faf9f6;
+  }
+
   body {
-    --paper: #faf9f6;
+    --columns: 4;
+    --guide: rgb(36 35 33 / 6%);
+    --gutter: clamp(16px, 5%, 56px);
+    --content-width: min(76rem, calc(100% - 2 * var(--gutter)));
+    --column-width: calc(var(--content-width) / var(--columns));
     margin: 0;
-    padding-inline: clamp(16px, 5%, 56px);
-    background: var(--paper);
+    background-image: linear-gradient(to right, var(--guide) 1px, transparent 1px);
+    background-size: var(--column-width) 100%;
+    /* Start a tile at the center, a grid boundary for both even column counts. */
+    background-position: calc(50% + var(--column-width) / 2) 0;
+    background-repeat: repeat-x;
     color: #242321;
     font: 400 16px/1.5 system-ui, sans-serif;
   }
 
   .portfolio-grid {
-    --columns: 4;
-    --guide: rgb(36 35 33 / 6%);
     display: grid;
     grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
     align-content: start;
-    max-width: 76rem;
+    width: var(--content-width);
     min-height: 100vh;
     margin-inline: auto;
-    background: repeating-linear-gradient(
-      to right,
-      var(--guide) 0 1px,
-      transparent 1px calc(100% / var(--columns))
-    );
   }
 
   header {
@@ -86,7 +90,7 @@
   }
 
   @media (min-width: 900px) {
-    .portfolio-grid {
+    body {
       --columns: 6;
     }
 
