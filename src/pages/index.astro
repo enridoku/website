@@ -32,10 +32,15 @@
     --content-width: min(76rem, calc(100% - 2 * var(--gutter)));
     --column-width: calc(var(--content-width) / var(--columns));
     margin: 0;
-    background-image: linear-gradient(to right, var(--guide) 1px, transparent 1px);
+    background-image: linear-gradient(
+      to right,
+      transparent calc(50% - 0.5px),
+      var(--guide) calc(50% - 0.5px) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
     background-size: var(--column-width) 100%;
-    /* Start a tile at the center, a grid boundary for both even column counts. */
-    background-position: calc(50% + var(--column-width) / 2) 0;
+    /* The center guide is a grid boundary for both even column counts. */
+    background-position: center top;
     background-repeat: repeat-x;
     color: #242321;
     font: 400 16px/1.5 system-ui, sans-serif;
@@ -51,10 +56,26 @@
   }
 
   header {
+    --ruler-ink: #a9a398;
+    position: relative;
     grid-column: 1 / -1;
     padding-block: 24px;
-    border-bottom: 1px solid #dedbd4;
+    border-bottom: 1px solid var(--ruler-ink);
     font-weight: 650;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -4px;
+    height: 7px;
+    background: repeating-linear-gradient(
+      to right,
+      var(--ruler-ink) 0 1px,
+      transparent 1px calc(100% / var(--columns))
+    );
+    pointer-events: none;
   }
 
   main {
